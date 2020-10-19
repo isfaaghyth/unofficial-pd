@@ -2,4 +2,10 @@ apply from: "$rootDir/common.gradle"
 
 dependencies {
     implementation project(rootProject.ext.libraries.network)
+
+    testImplementation rootProject.ext.compose.ui
+    testImplementation rootProject.ext.compose.uiTooling
+    testImplementation rootProject.ext.compose.foundation
+    testImplementation rootProject.ext.compose.material
+    testImplementation rootProject.ext.compose.runtimeLiveData
 }

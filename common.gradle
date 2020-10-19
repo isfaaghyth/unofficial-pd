@@ -34,6 +34,11 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    kotlinOptions {
+        jvmTarget = '1.8'
+        allWarningsAsErrors = true
+    }
+
     sourceSets.each {
         it.java.srcDirs += "src/$it.name/kotlin"
     }
@@ -42,6 +47,11 @@ android {
         unitTests.all {
             testLogging.events = ["passed", "skipped", "failed"]
         }
+    }
+
+    composeOptions {
+        kotlinCompilerVersion "1.4.10"
+        kotlinCompilerExtensionVersion "1.0.0-alpha05"
     }
 }
 
