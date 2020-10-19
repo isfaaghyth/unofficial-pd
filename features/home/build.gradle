@@ -1,11 +1,31 @@
 apply from: "$rootDir/common.gradle"
 
+android {
+    // compose
+    buildFeatures {
+        compose true
+    }
+
+    composeOptions {
+        kotlinCompilerVersion rootProject.ext.kotlin_version
+        kotlinCompilerExtensionVersion rootProject.ext.compose_version
+    }
+}
+
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+    kotlinOptions {
+        jvmTarget = "1.8"
+        freeCompilerArgs += ["-Xallow-jvm-ir-dependencies", "-Xskip-prerelease-check"]
+    }
+}
+
 dependencies {
     implementation project(rootProject.ext.libraries.network)
 
     implementation rootProject.ext.misc.coreKtx
     implementation rootProject.ext.misc.appCompat
 
+    implementation rootProject.ext.compose.compiler
     implementation rootProject.ext.compose.ui
     implementation rootProject.ext.compose.uiTooling
     implementation rootProject.ext.compose.foundation

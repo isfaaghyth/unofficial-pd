@@ -24,10 +24,22 @@ android {
         }
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+        useIR = true
+    }
+
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(rootProject.ext.features.home)
+
     implementation rootProject.ext.main.kotlin
 
     implementation rootProject.ext.misc.appCompat

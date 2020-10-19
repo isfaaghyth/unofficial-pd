@@ -15,11 +15,6 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    // compose
-    buildFeatures {
-        compose true
-    }
-
     buildTypes {
         debug {
 
@@ -36,7 +31,7 @@ android {
 
     kotlinOptions {
         jvmTarget = '1.8'
-        allWarningsAsErrors = true
+        useIR = true
     }
 
     sourceSets.each {
@@ -47,11 +42,6 @@ android {
         unitTests.all {
             testLogging.events = ["passed", "skipped", "failed"]
         }
-    }
-
-    composeOptions {
-        kotlinCompilerVersion "1.4.10"
-        kotlinCompilerExtensionVersion "1.0.0-alpha05"
     }
 }
 
