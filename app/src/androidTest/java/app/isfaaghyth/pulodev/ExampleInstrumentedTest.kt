@@ -1,4 +1,4 @@
-package app.isfaaghyth.starter
+package app.isfaaghyth.pulodev
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

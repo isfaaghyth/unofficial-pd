@@ -1,4 +1,4 @@
-package app.isfaaghyth.starter
+package app.isfaaghyth.pulodev
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
