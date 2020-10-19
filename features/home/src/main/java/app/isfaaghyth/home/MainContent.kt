@@ -1,15 +1,16 @@
 package app.isfaaghyth.home
 
+import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.Text
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRowFor
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -18,24 +19,35 @@ import app.isfaaghyth.home.data.Article
 import app.isfaaghyth.home.data.User
 
 @Composable
-fun LazyArticlesItem(articles: List<Article>) {
+fun MyApp(articles: List<Article>) {
     MaterialTheme {
-        LazyRowFor(items = articles) {
-            ArticleCard(article = it)
+        ScrollableColumn(Modifier.fillMaxSize()) {
+            LazyArticlesItem(articles)
         }
     }
 }
 
 @Composable
+fun LazyArticlesItem(articles: List<Article>) {
+    articles.forEach {
+        ArticleCard(article = it)
+    }
+}
+
+@Composable
 fun ArticleCard(article: Article) {
-    Card(elevation = 2.dp) {
+    Card(
+        elevation = 2.dp,
+        modifier = Modifier.padding(4.dp)
+    ) {
         Row(
             verticalGravity = CenterVertically,
-            modifier = Modifier.padding(8.dp)
+            modifier = Modifier
+                .padding(8.dp)
+                .fillMaxSize()
         ) {
             Column {
-                Text(
-                    text = article.user?.username?: "",
+                Text("@${article.user?.username?: ""}",
                     fontWeight = FontWeight.Light,
                     fontSize = 12.sp
                 )
@@ -44,10 +56,12 @@ fun ArticleCard(article: Article) {
                     fontWeight = FontWeight.Bold,
                     fontSize = 16.sp
                 )
+                Spacer(modifier = Modifier.preferredSize(10.dp))
                 Text(
                     text = "Dimasukkan oleh ${article.user?.fullName?: ""}",
                     fontWeight = FontWeight.Normal,
-                    fontSize = 12.sp
+                    fontSize = 10.sp,
+                    color = Color.Gray
                 )
             }
         }
@@ -72,5 +86,5 @@ fun PreviewArticleList() {
         )
     )
 
-    LazyArticlesItem(articles)
+    MyApp(articles)
 }

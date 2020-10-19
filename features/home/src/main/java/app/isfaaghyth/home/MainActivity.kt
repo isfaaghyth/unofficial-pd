@@ -25,7 +25,7 @@ class MainActivity: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent { LazyArticlesItem(articles = articles) }
+        setContent { MyApp(articles = articles) }
     }
 
 }
