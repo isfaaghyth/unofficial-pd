@@ -3,9 +3,14 @@ apply from: "$rootDir/common.gradle"
 dependencies {
     implementation project(rootProject.ext.libraries.network)
 
-    testImplementation rootProject.ext.compose.ui
-    testImplementation rootProject.ext.compose.uiTooling
-    testImplementation rootProject.ext.compose.foundation
-    testImplementation rootProject.ext.compose.material
-    testImplementation rootProject.ext.compose.runtimeLiveData
+    implementation rootProject.ext.misc.coreKtx
+    implementation rootProject.ext.misc.appCompat
+
+    implementation rootProject.ext.compose.ui
+    implementation rootProject.ext.compose.uiTooling
+    implementation rootProject.ext.compose.foundation
+    implementation rootProject.ext.compose.foundationLayout
+    implementation rootProject.ext.compose.material
+    implementation rootProject.ext.compose.runtime
+    implementation rootProject.ext.compose.runtimeLiveData
 }
